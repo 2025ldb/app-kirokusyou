@@ -1,0 +1,425 @@
+:root {
+  --ink: #1d2433;
+  --muted: #5c6573;
+  --line: #d7d1c4;
+  --paper: #f6f1e6;
+  --navy: #1f3356;
+  --gold: #9a7b32;
+  --white: #fffcf6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top, #fffaf0 0, transparent 38%),
+    #efe8d8;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.page {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 40px 0 80px;
+}
+
+.hero {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--gold);
+  letter-spacing: 0.28em;
+  font-size: 12px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Noto Serif JP", serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.lede {
+  max-width: 40em;
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.search {
+  display: grid;
+  grid-template-columns: 280px 1fr 180px;
+  gap: 12px;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.search label {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.search input,
+.search select {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #cfc6b4;
+  background: #fff;
+  color: var(--ink);
+}
+
+.status {
+  margin: 16px 0;
+  color: var(--muted);
+}
+
+.status.error {
+  color: #8a2b2b;
+}
+
+.table-wrap {
+  overflow: auto;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.results {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.results th,
+.results td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ece6d8;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.results th {
+  background: #f3ecdc;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.results strong {
+  display: block;
+}
+
+.kana {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.results button,
+.modal-actions button {
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--navy);
+  background: transparent;
+  color: var(--navy);
+  cursor: pointer;
+}
+
+.results button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--navy) !important;
+  color: #fff !important;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 24, 36, 0.55);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  z-index: 20;
+}
+
+.modal-panel {
+  width: min(1080px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  background: #ebe4d3;
+  padding: 20px;
+}
+
+.modal-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.modal-kicker {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+}
+
+.modal-toolbar h2 {
+  margin: 4px 0 0;
+  font-size: 18px;
+  font-family: "Noto Serif JP", serif;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.certificate-stage {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 16px;
+  overflow: hidden;
+}
+
+.certificate {
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  background: #fff;
+  color: #111;
+  font-family: "Noto Serif JP", serif;
+  transform: scale(0.52);
+  transform-origin: top center;
+  margin-bottom: calc(297mm * -0.48);
+}
+
+.certificate.is-capturing {
+  transform: none;
+  margin-bottom: 0;
+}
+
+.certificate-frame {
+  height: 100%;
+  padding: 10mm 12mm;
+}
+
+.certificate-inner {
+  height: 100%;
+  border: 2.2px solid #111;
+  padding: 14mm 12mm 12mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.certificate-title {
+  margin: 2mm 0 16mm;
+  text-align: center;
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.cert-fields {
+  width: 88%;
+  margin: 0 auto;
+}
+
+.cert-row {
+  display: grid;
+  grid-template-columns: 26mm 1fr;
+  align-items: end;
+  gap: 6mm;
+  margin-bottom: 10mm;
+}
+
+.cert-label {
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  padding-bottom: 3px;
+}
+
+.cert-value {
+  border-bottom: 1px solid #111;
+  font-size: 22px;
+  line-height: 1.45;
+  padding: 0 2mm 4px;
+  min-height: 9mm;
+}
+
+.certificate-proof {
+  margin: 12mm 0 0;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+}
+
+.certificate-issued {
+  margin: 6mm 0 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+.certificate-signblock {
+  align-self: flex-start;
+  display: grid;
+  grid-template-columns: max-content 20mm;
+  column-gap: 12mm;
+  align-items: center;
+  margin: auto 0 12mm 10mm;
+  text-align: left;
+  line-height: 1.9;
+}
+
+.certificate-assoc {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.certificate-president {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.certificate-stamp {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 20mm;
+  height: 20mm;
+  object-fit: contain;
+}
+
+.site-footer {
+  display: flex;
+  gap: 10px;
+  margin-top: 36px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.site-footer a {
+  color: var(--navy);
+}
+
+.admin-page h1 {
+  margin: 0;
+  font-family: "Noto Serif JP", serif;
+  font-size: 32px;
+  color: var(--navy);
+}
+
+.admin-card {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.admin-card h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.admin-card label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.admin-note {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.admin-card input:not([type="file"]) {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #cfc6b4;
+  background: #fff;
+  color: var(--ink);
+}
+
+.admin-card button {
+  height: 40px;
+  padding: 0 16px;
+  width: fit-content;
+  border: 1px solid var(--navy);
+  background: transparent;
+  color: var(--navy);
+  cursor: pointer;
+}
+
+.admin-card ul {
+  margin: 0;
+  padding-left: 1.2em;
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .search {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate {
+    transform-origin: top left;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .hero,
+  .search,
+  .status,
+  .table-wrap,
+  .modal-toolbar {
+    display: none !important;
+  }
+
+  .modal,
+  .modal-panel,
+  .certificate-stage {
+    position: static;
+    background: white;
+    padding: 0;
+    max-height: none;
+    overflow: visible;
+  }
+}
